@@ -45,8 +45,8 @@
 
 
 
-
-    
+       // Listar categorias
+       $("#listar").load("cadastros/categorias/listar.php");   
 
 
 
