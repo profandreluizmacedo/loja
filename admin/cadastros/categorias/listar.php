@@ -23,13 +23,12 @@
             echo '<th scope="row">' . $id . '</th>';
             echo '<td>' . htmlspecialchars($categoria) . '</td>';
             echo '<td>
-                    <button class="btn btn-sm btn-primary" 
+                    <button  class="btn btn-sm btn-primary" 
                     onclick="editarCategoria
                     (' . $id . ', \'' . addslashes($categoria) . '\')">Editar</button>
 
-                    <button class="btn btn-sm btn-danger" 
-                    onclick="excluirCategoria
-                    (' . $id . ')">Excluir</button>
+                    <button class="btn btn-sm btn-danger btnExcluir" 
+                    >Excluir</button>
 
                   </td>';
             echo '</tr>';
@@ -42,3 +41,20 @@
         echo '<div class="alert alert-info" role="alert">Nenhuma categoria cadastrada.</div>';
     }
 ?>
+
+<script>
+
+    $(".btnExcluir").click(function() {
+        var id = $(this).closest("tr").find("th").text();      
+        if (confirm("Tem certeza que deseja excluir esta categoria?")) {
+            
+            $.post("cadastros/categorias/excluir.php", 
+            { id: id }, function(resposta) {
+                modalAlerta('Retorno', resposta);
+                $("#listar").load("cadastros/categorias/listar.php");
+            });
+            
+        }
+    });
+
+    </script>
