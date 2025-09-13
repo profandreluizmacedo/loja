@@ -33,7 +33,7 @@
                 data: { txtcategoria: categoria },
                 success: function(resposta) {
                   modalAlerta('Retorno', resposta);
-                   // alert(resposta);
+                  $("#listar").load("cadastros/categorias/listar.php"); 
                     $('#categoria').val('');
                     $('#categoria').focus();
                 },

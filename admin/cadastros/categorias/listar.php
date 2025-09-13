@@ -45,11 +45,13 @@
 <script>
 
     $(".btnExcluir").click(function() {
-        var id = $(this).closest("tr").find("th").text();      
+        var id = $(this).closest("tr").find("th").text(); 
+        var botao = $(this);     
         if (confirm("Tem certeza que deseja excluir esta categoria?")) {
-            
+            botao.prop("disabled", true).text("Excluindo...");
             $.post("cadastros/categorias/excluir.php", 
             { id: id }, function(resposta) {
+                botao.prop("disabled", false).text("Excluir");
                 modalAlerta('Retorno', resposta);
                 $("#listar").load("cadastros/categorias/listar.php");
             });
