@@ -10,4 +10,5 @@
   }else{
     echo "Erro ao excluir categoria!";
   } 
+  //TEste de Commite
   ?>
