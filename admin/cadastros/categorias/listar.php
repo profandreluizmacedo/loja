@@ -23,12 +23,9 @@
             echo '<th scope="row">' . $id . '</th>';
             echo '<td>' . htmlspecialchars($categoria) . '</td>';
             echo '<td>
-                    <button  class="btn btn-sm btn-primary" 
-                    onclick="editarCategoria
-                    (' . $id . ', \'' . addslashes($categoria) . '\')">Editar</button>
+                    <button class="btn btn-sm btn-primary btnEditar">Editar</button>
 
-                    <button class="btn btn-sm btn-danger btnExcluir" 
-                    >Excluir</button>
+                    <button class="btn btn-sm btn-danger btnExcluir">Excluir</button>
 
                   </td>';
             echo '</tr>';
@@ -44,10 +41,23 @@
 
 <script>
 
+    $(".btnEditar").click(function() {
+        var id = $(this).closest("tr").find("th").text();       
+        var categoria = $(this).closest("tr").find("td").eq(0).text(); 
+
+        //Carrego a descricao no Campo txtcategoria
+        $("#categoria").val(categoria);
+        $("#id").val(id);
+        $("#btnCancel").show();
+
+    });
+
     $(".btnExcluir").click(function() {
         var id = $(this).closest("tr").find("th").text(); 
         var botao = $(this);     
-        if (confirm("Tem certeza que deseja excluir esta categoria?")) {
+       // if (confirm("Tem certeza que deseja excluir esta categoria?")) {
+        modalPergunta("Confirma Exclusão", "Deseja realmente excluir a categoria?").then((resposta) => {
+        if (resposta) {
             botao.prop("disabled", true).text("Excluindo...");
             $.post("cadastros/categorias/excluir.php", 
             { id: id }, function(resposta) {
@@ -56,7 +66,10 @@
                 $("#listar").load("cadastros/categorias/listar.php");
             });
             
-        }
+          } //Encerra o if(resposta)
+        }); //Encerra o ModalPergunta
     });
+
+
 
     </script>

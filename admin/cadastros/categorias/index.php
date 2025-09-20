@@ -7,7 +7,9 @@
         <div class="card-body">
             <input class="form-control form-control-lg" type="text" id="categoria" name="categoria" placeholder="Informe a Categoria">
             <br>
+            <input type="hidden" id="id" name="id" value="0">
             <button type="submit" id="btnSalvar" class="btn btn-primary">Salvar</button>
+            <button id="btnCancel" class="btn btn-danger" style="display: none;">Cancelar</button>
         </div>
     </div>
   </div>            
@@ -20,7 +22,8 @@
       $(document).ready(function() {
         $('#categoria').focus();
         $("#btnSalvar").click(function() {
-            var categoria = $('#categoria').val();
+            var categoria = $('#categoria').val(); //Recupera o valor do campo Categoria
+            var id        = $('#id').val(); //recupera o valor do campo ID escondido
             if (categoria === '') {
                // alert('Por favor, informe a Categoria.');
                 modalAlerta('Atenção', 'Por favor, informe a Categoria.');
@@ -30,7 +33,7 @@
             $.ajax({
                 type: 'POST',
                 url: 'cadastros/categorias/salvar.php',
-                data: { txtcategoria: categoria },
+                data: { txtcategoria: categoria, id:id },
                 success: function(resposta) {
                   modalAlerta('Retorno', resposta);
                   $("#listar").load("cadastros/categorias/listar.php"); 
@@ -41,6 +44,14 @@
                     alert('Erro ao salvar a categoria. Por favor, tente novamente.');
                 }
             });
+        });
+
+        $("#btnCancel").click(function() {
+            // Limpa os campos e esconde o botão Cancelar
+            $('#categoria').val('');
+            $('#id').val('0');
+            $('#categoria').focus();
+            $("#btnCancel").hide();
         });
 
 
