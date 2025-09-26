@@ -54,12 +54,8 @@
             $("#btnCancel").hide();
         });
 
-
-
        // Listar categorias
-       $("#listar").load("cadastros/categorias/listar.php");   
-
-
+       $("#listar").load("cadastros/categorias/listar.php"); 
 
     });
 </script>

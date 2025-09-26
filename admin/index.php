@@ -289,7 +289,7 @@
 
                  switch ($_GET["pg"]) {
                    case "Categorias": $incluir = "cadastros/categorias/index.php"; break;
-                   case "SubCategorias": $incluir = "categorias.php"; break;
+                   case "SubCategorias": $incluir = "cadastros/subcategorias/index.php"; break;
                    case "Produtos": $incluir = "categorias.php"; break;
                    default: $incluir = "dashboard.php"; break;
                  }   
