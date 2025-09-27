@@ -3,12 +3,12 @@
   include("../../includes/conexao.php");
 
   $excluir = mysqli_query($conexao,
-  "delete from tb_categorias WHERE id = $id");
+  "delete from tb_subcategorias WHERE id = $id");
 
   if ($excluir){
-    echo "Categoria removida com sucesso!";
+    echo "SubCategoria removida com sucesso!";
   }else{
-    echo "Erro ao excluir categoria!";
+    echo "Erro ao excluir subcategoria!";
   } 
   //TEste de Commite
   ?>

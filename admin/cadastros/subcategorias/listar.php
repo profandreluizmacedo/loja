@@ -49,9 +49,17 @@
     $(".btnEditar").click(function() {
         var id = $(this).closest("tr").find("th").text();       
         var categoria = $(this).closest("tr").find("td").eq(0).text(); 
+        var subcategoria = $(this).closest("tr").find("td").eq(1).text(); 
 
         //Carrego a descricao no Campo txtcategoria
-        $("#categoria").val(categoria);
+
+        $('select option').filter(function() {
+            // Compara o texto de cada opção com o texto desejado
+            return $(this).text() === categoria;
+         }).prop('selected', true); // Define a propriedade 'selected' como true para a opção encontrada
+      
+
+        $("#subcategoria").val(subcategoria);
         $("#id").val(id);
         $("#btnCancel").show();
 
@@ -61,14 +69,14 @@
         var id = $(this).closest("tr").find("th").text(); 
         var botao = $(this);     
        // if (confirm("Tem certeza que deseja excluir esta categoria?")) {
-        modalPergunta("Confirma Exclusão", "Deseja realmente excluir a categoria?").then((resposta) => {
+        modalPergunta("Confirma Exclusão", "Deseja realmente excluir a Subcategoria?").then((resposta) => {
         if (resposta) {
             botao.prop("disabled", true).text("Excluindo...");
-            $.post("cadastros/categorias/excluir.php", 
+            $.post("cadastros/subcategorias/excluir.php", 
             { id: id }, function(resposta) {
                 botao.prop("disabled", false).text("Excluir");
                 modalAlerta('Retorno', resposta);
-                $("#listar").load("cadastros/categorias/listar.php");
+                $("#listar").load("cadastros/subcategorias/listar.php");
             });
             
           } //Encerra o if(resposta)
