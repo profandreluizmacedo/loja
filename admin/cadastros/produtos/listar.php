@@ -1,9 +1,8 @@
 <?php
   include("../../includes/conexao.php");
   $listar = mysqli_query($conexao, 
-         "SELECT ts.id, tc.categoria, ts.subcategoria  FROM tb_subcategorias ts
-         INNER JOIN tb_categorias tc ON ts.id_categoria = tc.id
-         ORDER BY ts.subcategoria");
+        "SELECT tp.id, tp.nome, ts.subcategoria, tp.preco FROM tb_produtos tp
+         inner join tb_subcategorias ts on ts.id = tp.id_subcategoria order by tp.id desc");
 
     if(mysqli_num_rows($listar) > 0) {
         echo '<div class="table-responsive">';
@@ -11,22 +10,27 @@
         echo '<thead>';
         echo '<tr>';
         echo '<th scope="col">#</th>';
-        echo '<th scope="col">Categoria</th>';
         echo '<th scope="col">SubCategoria</th>';
+        echo '<th scope="col">Nome</th>';
+        echo '<th scope="col">Preço</th>';
         echo '<th scope="col">Ações</th>';
         echo '</tr>';
         echo '</thead>';
         echo '<tbody>';
         
         while($linha = mysqli_fetch_array($listar)) {
-            $id = $linha['id'];
-            $categoria = $linha['categoria'];
+            $id = $linha['id'];        
             $subcategoria = $linha['subcategoria'];
+            $nome = $linha['nome'];
+            $preco = number_format($linha['preco'], 2, ',', '.');
+            
+             // Buscando a categoria relacionada à subcategoria
             
             echo '<tr>';
             echo '<th scope="row">' . $id . '</th>';
-            echo '<td>' . htmlspecialchars($categoria) . '</td>';
-            echo '<td>' . htmlspecialchars($subcategoria) . '</td>';
+            echo '<td>' . $subcategoria . '</td>';
+            echo '<td>' . $nome . '</td>';
+            echo '<td>' . $preco . '</td>';
             echo '<td>
                     <button class="btn btn-sm btn-primary btnEditar">Editar</button>
 
