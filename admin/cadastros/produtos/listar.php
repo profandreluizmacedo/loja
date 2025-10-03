@@ -1,7 +1,7 @@
 <?php
   include("../../includes/conexao.php");
   $listar = mysqli_query($conexao, 
-        "SELECT tp.id, tp.nome, ts.subcategoria, tp.preco FROM tb_produtos tp
+        "SELECT tp.id, tp.nome, ts.subcategoria, tp.preco, tp.foto FROM tb_produtos tp
          inner join tb_subcategorias ts on ts.id = tp.id_subcategoria order by tp.id desc");
 
     if(mysqli_num_rows($listar) > 0) {
@@ -13,6 +13,7 @@
         echo '<th scope="col">SubCategoria</th>';
         echo '<th scope="col">Nome</th>';
         echo '<th scope="col">Preço</th>';
+        echo '<th scope="col">Foto</th>';
         echo '<th scope="col">Ações</th>';
         echo '</tr>';
         echo '</thead>';
@@ -31,6 +32,7 @@
             echo '<td>' . $subcategoria . '</td>';
             echo '<td>' . $nome . '</td>';
             echo '<td>' . $preco . '</td>';
+            echo '<td><img src="cadastros/produtos/fotos/' . $linha['foto'] . '" width="100" class="rounded-circle"></td>';
             echo '<td>
                     <button class="btn btn-sm btn-primary btnEditar">Editar</button>
 
