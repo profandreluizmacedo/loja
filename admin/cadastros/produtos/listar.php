@@ -32,7 +32,7 @@
             echo '<td>' . $subcategoria . '</td>';
             echo '<td>' . $nome . '</td>';
             echo '<td>' . $preco . '</td>';
-            echo '<td><img src="cadastros/produtos/fotos/' . $linha['foto'] . '" width="100" class="rounded-circle"></td>';
+            echo '<td><img src="cadastros/produtos/fotos/' . $linha['foto'] . '" width="100"></td>';
             echo '<td>
                     <button class="btn btn-sm btn-primary btnEditar">Editar</button>
 
@@ -46,43 +46,47 @@
         echo '</table>';
         echo '</div>';
     } else {
-        echo '<div class="alert alert-info" role="alert">Nenhuma categoria cadastrada.</div>';
+        echo '<div class="alert alert-info" role="alert">Nenhum produto cadastrado.</div>';
     }
 ?>
 
 <script>
 
     $(".btnEditar").click(function() {
-        var id = $(this).closest("tr").find("th").text();       
-        var categoria = $(this).closest("tr").find("td").eq(0).text(); 
-        var subcategoria = $(this).closest("tr").find("td").eq(1).text(); 
+        var id = $(this).closest("tr").find("th").text();   
 
-        //Carrego a descricao no Campo txtcategoria
-
-        $('select option').filter(function() {
-            // Compara o texto de cada opção com o texto desejado
-            return $(this).text() === categoria;
-         }).prop('selected', true); // Define a propriedade 'selected' como true para a opção encontrada
+        $.getJSON("cadastros/produtos/editar.php", { id: id }, function(data) {
+       
+            $("#id").val(data.id);
+            $("#id_subcategoria").val(data.id_subcategoria);
+            $("#nome").val(data.nome);
+            $("#descricao").val(data.descricao);
+            $("#estoque").val(data.estoque);
+            $("#preco").val(Number(data.preco).toLocaleString('pt-BR', {
+                 minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+        //    if (data.foto) {
+        //        $("#fotoPreview").attr("src", "cadastros/produtos/fotos/" + data.foto).show();
+        //    } else {
+        //        $("#fotoPreview").hide();
+        //    }            
+            $("#btnSalvarProduto").text("Atualizar Produto");
+            $("#btnCancelProduto").show();
+        });  
       
-
-        $("#subcategoria").val(subcategoria);
-        $("#id").val(id);
-        $("#btnCancel").show();
-
     });
 
     $(".btnExcluir").click(function() {
         var id = $(this).closest("tr").find("th").text(); 
         var botao = $(this);     
        // if (confirm("Tem certeza que deseja excluir esta categoria?")) {
-        modalPergunta("Confirma Exclusão", "Deseja realmente excluir a Subcategoria?").then((resposta) => {
+        modalPergunta("Confirma Exclusão", "Deseja realmente excluir o produto?").then((resposta) => {
         if (resposta) {
             botao.prop("disabled", true).text("Excluindo...");
-            $.post("cadastros/subcategorias/excluir.php", 
+            $.post("cadastros/produtos/excluir.php", 
             { id: id }, function(resposta) {
                 botao.prop("disabled", false).text("Excluir");
                 modalAlerta('Retorno', resposta);
-                $("#listar").load("cadastros/subcategorias/listar.php");
+                $("#listarProdutos").load("cadastros/produtos/listar.php");
             });
             
           } //Encerra o if(resposta)
