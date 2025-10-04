@@ -61,6 +61,7 @@
                
                 <br>
                 <input type="hidden" id="id" name="id" value="0">
+                <input type="hidden" id="possui_foto" name="possui_foto" value="0">
                 <button type="submit" id="btnSalvarProduto" class="btn btn-primary">Salvar Produto</button>
                 <button id="btnCancelProduto" class="btn btn-danger" style="display: none;">Cancelar</button>
             </div>

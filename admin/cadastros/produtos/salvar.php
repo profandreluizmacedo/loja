@@ -8,20 +8,32 @@
 
   include("../../includes/conexao.php");
 
-  if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
+  if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {    
     $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
     $novo_nome = uniqid() . '.' . $extensao;
     $diretorio = "fotos/";
     move_uploaded_file($_FILES['foto']['tmp_name'], $diretorio . $novo_nome);
     $foto = $novo_nome;
   } else {
-    $foto = null; // Ou algum valor padrão
+    if ($_POST['possui_foto'] == 1) {
+      $foto = $_POST['foto_atual'];
+    } else {
+      // Se não houver foto e não for uma atualização, define como null
+      $foto = null; // Ou algum valor padrão
+    }
   }
   
   if ($id > 0) {
     // Atualiza a categoria existente
     $salvou = mysqli_query($conexao,
-      "UPDATE tb_subcategorias SET id_categoria = '$categoria', subcategoria = '$subcategoria' WHERE id = $id");
+      "UPDATE tb_produtos SET id_subcategoria = '$subcategoria', 
+      nome = '$nome', 
+      descricao = '$descricao', 
+      estoque = '$estoque', 
+      preco = $preco, 
+      foto = '$foto' 
+       WHERE id = $id") or die(mysqli_error($conexao));
+
   }else{
   $salvou = mysqli_query($conexao,
   "INSERT INTO tb_produtos (id_subcategoria, nome, descricao, estoque, preco, foto) VALUES 

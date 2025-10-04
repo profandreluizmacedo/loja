@@ -64,11 +64,9 @@
             $("#estoque").val(data.estoque);
             $("#preco").val(Number(data.preco).toLocaleString('pt-BR', {
                  minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-        //    if (data.foto) {
-        //        $("#fotoPreview").attr("src", "cadastros/produtos/fotos/" + data.foto).show();
-        //    } else {
-        //        $("#fotoPreview").hide();
-        //    }            
+            if (data.foto) {
+               $("#possui_foto").val(data.foto);
+            }         
             $("#btnSalvarProduto").text("Atualizar Produto");
             $("#btnCancelProduto").show();
         });  
