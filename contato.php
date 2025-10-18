@@ -253,7 +253,7 @@ body {
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-laptop-code me-2"></i>Liquidatech
+                <i class="fas fa-laptop-code me-2"></i>LOJAETEC
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>

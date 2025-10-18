@@ -172,7 +172,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-laptop-code me-2"></i>Liquidatech
+                <i class="fas fa-laptop-code me-2"></i>LOJAETEC
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
@@ -180,26 +180,27 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Início</a>
+                        <a class="nav-link active" href="index.php">Início</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown">
-                            Categorias
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Ar e Ventilação</a></li>
-                            <li><a class="dropdown-item" href="#">Áudio</a></li>
-                            <li><a class="dropdown-item" href="#">Câmeras e Drones</a></li>
-                            <li><a class="dropdown-item" href="#">Celular & Smartphone</a></li>
-                            <li><a class="dropdown-item" href="#">Computadores</a></li>
-                            <li><a class="dropdown-item" href="#">Conectividade</a></li>
-                            <li><a class="dropdown-item" href="#">Eletroportáteis</a></li>
-                            <li><a class="dropdown-item" href="#">Espaço Gamer</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ofertas</a>
-                    </li>
+                    <?php
+                        include("admin/includes/conexao.php");
+                        $categorias = mysqli_query($conexao, "SELECT * FROM tb_categorias ORDER BY categoria ASC");
+                        while ($categoria = mysqli_fetch_array($categorias)) {
+                            $subcategorias = mysqli_query($conexao, "SELECT * FROM tb_subcategorias WHERE id_categoria = " . $categoria['id'] . " ORDER BY subcategoria ASC");
+                             if (mysqli_num_rows($subcategorias) > 0) {
+                                echo '<li class="nav-item dropdown">';
+                                echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown' . $categoria['id'] . '" role="button" data-bs-toggle="dropdown" aria-expanded="false">' . $categoria['categoria'] . '</a>';
+                                echo '<ul class="dropdown-menu" aria-labelledby="navbarDropdown' . $categoria['id'] . '">';
+                                while ($subcategoria = mysqli_fetch_array($subcategorias)) {
+                                    echo '<li><a class="dropdown-item" href="#">' . $subcategoria['subcategoria'] . '</a></li>';
+                                }
+                                echo '</ul>';
+                                echo '</li>';
+                            } else {
+                                echo '<li class="nav-item"><a class="nav-link" href="#">' . $categoria['categoria'] . '</a></li>';
+                            }
+                        }
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link" href="contato.html">Contato</a>
                     </li>
