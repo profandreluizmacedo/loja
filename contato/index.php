@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato - Liquidatech</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-   :root {
-    --primary-color: #ff6b35;
-    --secondary-color: #adb5bd;
-    --accent-color: #ff6b35;
-    --dark-color: #121212;
-    --light-color: #f8f9fa;
-    --dark-gray: #343a40;
-    --light-gray: #e9ecef;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--dark-color);
-    color: var(--light-color);
-}
-
-.navbar-brand {
-    font-weight: 700;
-    font-size: 1.9rem;
-    color: var(--primary-color) !important;
-    letter-spacing: 1px;
-}
-
 .contact-hero {
     background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
     background-size: cover;
@@ -70,36 +37,7 @@ body {
     color: var(--accent-color);
 }
 
-.footer {
-    background-color: var(--dark-gray);
-    color: var(--light-color);
-    padding: 50px 0 45px;
-    margin-top: 60px;
-    font-size: 0.9rem;
-    letter-spacing: 0.03em;
-}
 
-.section-title {
-    position: relative;
-    margin-bottom: 40px;
-    padding-bottom: 12px;
-    font-weight: 700;
-    font-size: 2rem;
-    color: var(--light-color);
-    text-align: center;
-}
-
-.section-title:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: var(--accent-color);
-    border-radius: 3px;
-}
 
 .contact-method {
     text-align: center;
@@ -123,52 +61,6 @@ body {
     margin-bottom: 18px;
 }
 
-.map-container {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.1);
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    font-weight: 600;
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    color: var(--dark-color);
-}
-
-.btn-primary:hover {
-    background-color: #e95e14;
-    border-color: #e95e14;
-    box-shadow: 0 6px 14px rgba(233, 94, 20, 0.4);
-    color: var(--dark-color);
-}
-
-.btn-primary:focus, .btn-primary:active {
-    box-shadow: 0 0 0 0.4rem rgba(255, 107, 53, 0.5);
-}
-
-.form-label {
-    font-weight: 600;
-    color: var(--light-gray);
-}
-
-.form-control, .form-select {
-    border-radius: 8px;
-    border: 1.8px solid #495057;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    font-size: 1rem;
-    padding: 10px 14px;
-    background-color: var(--dark-color);
-    color: var(--light-color);
-}
-
-.form-control::placeholder {
-    color: var(--secondary-color);
-}
 
 .form-control:focus, .form-select:focus {
     border-color: var(--primary-color);
@@ -215,96 +107,9 @@ body {
     color: var(--accent-color) !important;
 }
 
-.navbar-light {
-    background-color: var(--dark-gray) !important;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 0.7);
-}
-
-.navbar-nav .nav-link {
-    font-weight: 600;
-    color: var(--secondary-color);
-    transition: color 0.3s ease;
-}
-
-.navbar-nav .nav-link.active, 
-.navbar-nav .nav-link:hover {
-    color: var(--primary-color);
-}
-
-.navbar-nav .dropdown-menu {
-    border-radius: 12px;
-    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.15);
-    background-color: var(--dark-gray);
-}
-
-.navbar-nav .dropdown-item {
-    color: var(--light-gray);
-}
-
-.navbar-nav .dropdown-item:hover {
-    background-color: var(--primary-color);
-    color: var(--dark-color) !important;
-}
 
     </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-laptop-code me-2"></i>LOJAETEC
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Início</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown">
-                            Categorias
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Ar e Ventilação</a></li>
-                            <li><a class="dropdown-item" href="#">Áudio</a></li>
-                            <li><a class="dropdown-item" href="#">Câmeras e Drones</a></li>
-                            <li><a class="dropdown-item" href="#">Celular & Smartphone</a></li>
-                            <li><a class="dropdown-item" href="#">Computadores</a></li>
-                            <li><a class="dropdown-item" href="#">Conectividade</a></li>
-                            <li><a class="dropdown-item" href="#">Eletroportáteis</a></li>
-                            <li><a class="dropdown-item" href="#">Espaço Gamer</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#ofertas">Ofertas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="contato.html">Contato</a>
-                    </li>
-                </ul>
-                <form class="d-flex me-3">
-                    <input class="form-control me-2" type="search" placeholder="Pesquisar produtos...">
-                    <button class="btn btn-outline-primary" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-                <div class="d-flex">
-                    <a href="#" class="btn btn-outline-secondary me-2">
-                        <i class="fas fa-user"></i>
-                    </a>
-                    <a href="#" class="btn btn-outline-primary position-relative">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            3
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+
 
     <!-- Contact Hero -->
     <section class="contact-hero">
@@ -511,55 +316,3 @@ body {
         </section>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Liquidatech</h5>
-                    <p>Sua loja de confiança para produtos de tecnologia com os melhores preços e qualidade.</p>
-                    <div class="social-links">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-2 mb-4">
-                    <h5>Links Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white-50">Início</a></li>
-                        <li><a href="index.html#produtos" class="text-white-50">Produtos</a></li>
-                        <li><a href="index.html#ofertas" class="text-white-50">Ofertas</a></li>
-                        <li><a href="contato.html" class="text-white-50">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h5>Categorias</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white-50">Espaço Gamer</a></li>
-                        <li><a href="#" class="text-white-50">Celulares</a></li>
-                        <li><a href="#" class="text-white-50">Computadores</a></li>
-                        <li><a href="#" class="text-white-50">Áudio</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <h5>Contato</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> Av. Tecnologia, 123</li>
-                        <li><i class="fas fa-phone me-2"></i> (11) 3456-7890</li>
-                        <li><i class="fas fa-envelope me-2"></i> contato@liquidatech.com</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="bg-light">
-            <div class="text-center pt-3">
-                <p class="mb-0">&copy; 2025 Liquidatech. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
