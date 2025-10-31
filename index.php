@@ -186,10 +186,12 @@
                         include("admin/includes/conexao.php");
                         $categorias = mysqli_query($conexao, "SELECT * FROM tb_categorias ORDER BY categoria ASC");
                         while ($categoria = mysqli_fetch_array($categorias)) {
-                            $subcategorias = mysqli_query($conexao, "SELECT * FROM tb_subcategorias WHERE id_categoria = " . $categoria['id'] . " ORDER BY subcategoria ASC");
+                            $subcategorias = mysqli_query($conexao, "SELECT * FROM tb_subcategorias WHERE id_categoria = " . $categoria['id'] . 
+                            " ORDER BY subcategoria ASC");
                              if (mysqli_num_rows($subcategorias) > 0) {
                                 echo '<li class="nav-item dropdown">';
-                                echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown' . $categoria['id'] . '" role="button" data-bs-toggle="dropdown" aria-expanded="false">' . $categoria['categoria'] . '</a>';
+                                echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown' . $categoria['id'] . '" 
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">' . $categoria['categoria'] . '</a>';
                                 echo '<ul class="dropdown-menu" aria-labelledby="navbarDropdown' . $categoria['id'] . '">';
                                 while ($subcategoria = mysqli_fetch_array($subcategorias)) {
                                     echo '<li><a class="dropdown-item" href="#">' . $subcategoria['subcategoria'] . '</a></li>';
