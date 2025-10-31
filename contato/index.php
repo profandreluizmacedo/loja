@@ -161,28 +161,18 @@
                 <div class="contact-form">
                     <h2 class="section-title">Envie sua Mensagem</h2>
                     <p class="text-muted mb-4">Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
-                    <form>
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="firstName" class="form-label">Primeiro Nome *</label>
-                                <input type="text" class="form-control" id="firstName" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="lastName" class="form-label">Sobrenome *</label>
-                                <input type="text" class="form-control" id="lastName" required>
-                            </div>
+                    <form method="POST">
+                        <div class="mb-3">                    
+                                <label for="firstName" class="form-label">Nome *</label>
+                                <input type="text" class="form-control" id="nome" name="nome" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">E-mail *</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Telefone</label>
-                            <input type="tel" class="form-control" id="phone">
-                        </div>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>                 
                         <div class="mb-3">
                             <label for="subject" class="form-label">Assunto *</label>
-                            <select class="form-select" id="subject" required>
+                            <select class="form-select" id="assunto" name="assunto" required>
                                 <option value="" selected disabled>Selecione um assunto</option>
                                 <option value="suporte">Suporte Técnico</option>
                                 <option value="vendas">Dúvidas sobre Vendas</option>
@@ -190,19 +180,12 @@
                                 <option value="devolucao">Trocas e Devoluções</option>
                                 <option value="outro">Outro</option>
                             </select>
-                        </div>
+                        </div>          
                         <div class="mb-3">
-                            <label for="orderNumber" class="form-label">Número do Pedido (se aplicável)</label>
-                            <input type="text" class="form-control" id="orderNumber">
+                            <label for="mesagem" class="form-label">Mensagem *</label>
+                            <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Descreva sua dúvida ou solicitação..." required></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Mensagem *</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Descreva sua dúvida ou solicitação..." required></textarea>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="newsletter">
-                            <label class="form-check-label" for="newsletter">Desejo receber novidades e promoções por e-mail</label>
-                        </div>
+       
                         <button type="submit" class="btn btn-primary btn-lg px-4">
                             <i class="fas fa-paper-plane me-2"></i>Enviar Mensagem
                         </button>
@@ -316,3 +299,29 @@
         </section>
     </div>
 
+<script>
+    $("form").submit(function(event) {
+        event.preventDefault(); // Evita o envio padrão do formulário
+      
+        enviarFormulario();
+    });
+
+    function enviarFormulario() {
+        $.ajax({
+            type: "POST",
+            url: "contato/email.php",
+            data: {
+            nome: $("#nome").val(),
+            email: $("#email").val(),
+            assunto: $("#assunto").val(),
+            mensagem: $("#mensagem").val()
+        },
+        success: function(response) {
+            alert("Mensagem enviada com sucesso!"+response);
+        },
+        error: function() {
+            alert("Ocorreu um erro ao enviar a mensagem. Tente novamente.");
+        }
+    });
+    }
+</script>
