@@ -19,7 +19,7 @@ try {
 
 
 	$mail->isSMTP();
-	$mail->Host       = 'smtp.gmail.com';
+	$mail->Host       = 'smtp.gmail.com'; //smtp.seuservidor.com.br
 	$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 	$mail->Port       = 465;
 
@@ -30,7 +30,7 @@ try {
 	//Crie um Aplicativo e gere uma Senha para o APP e informe a Senha gerada na Variavel password acima
     //A conta precisa estar com a Verificação em duas etapas ativada
 	$mail->setFrom($email,$nome);
-	$mail->addAddress("andre_luiz@etecbebedouro.com.br"); //Email para onde você vai enviar
+	$mail->addAddress("net-solutions@hotmail.com"); //Email para onde você vai enviar
 
 	$mail->isHTML(true);
 	$mail->Subject = 'Contato Efetuado Através da Loja ETEC'; //Assunto do Email

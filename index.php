@@ -215,7 +215,7 @@
                     </button>
                 </form>
                 <div class="d-flex">
-                    <a href="#" class="btn btn-outline-secondary me-2">
+                    <a href="?page=CadastroLogin" class="btn btn-outline-secondary me-2">
                         <i class="fas fa-user"></i>
                     </a>
                     <a href="#" class="btn btn-outline-primary position-relative">
@@ -234,6 +234,8 @@
             $page = $_GET['page'];
             switch ($page) {
                 case 'contato': include("contato/index.php");  break;
+                case 'CadastroLogin': include("cadastroLogin.php"); break;
+                case 'NovoCliente': include("salvaCliente.php"); break;
                 default: include("produtos.php");   break;
             }
         } else {

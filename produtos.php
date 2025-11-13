@@ -13,115 +13,62 @@
         <section class="mb-5">
             <h2 class="section-title">Categorias em Destaque</h2>
             <div class="row g-4">
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <i class="fas fa-gamepad"></i>
-                        <h5>Espaço Gamer</h5>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h5>Celulares</h5>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <i class="fas fa-laptop"></i>
-                        <h5>Computadores</h5>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <i class="fas fa-headphones"></i>
-                        <h5>Áudio</h5>
-                    </div>
-                </div>
+                <?php
+                  $subcategorias = mysqli_query($conexao, "SELECT * FROM tb_subcategorias limit 4 ");  
+                  $i = 0;
+                  while ($row = mysqli_fetch_assoc($subcategorias)) {                
+                    switch ($i) {
+                      case 0: $icon = 'fas fa-gamepad'; break;
+                      case 1: $icon = 'fas fa-mobile-alt'; break;
+                      case 2: $icon = 'fas fa-laptop'; break;
+                      case 3: $icon = 'fas fa-headphones'; break;
+                      default: $icon = 'fas fa-box-open';
+                    }
+                    echo "
+                        <div class='col-6 col-md-3'>
+                            <div class='category-card'>
+                                <i class='$icon'></i>
+                                <h5>".$row['subcategoria']."</h5>
+                            </div>
+                        </div>
+                      ";
+                  }
+                ?>       
             </div>
         </section>
 
-        <!-- Promo Banner -->
-        <section class="promo-banner text-center">
-            <h2>Super Promoção em Memórias RAM</h2>
-            <p class="fs-5">Até 40% de desconto em memórias DDR4 e DDR5</p>
-            <a href="#" class="btn btn-light btn-lg mt-3">Aproveitar Oferta</a>
-        </section>
+
 
         <!-- Featured Products -->
         <section class="mb-5">
             <h2 class="section-title">Produtos em Destaque</h2>
             <div class="row g-4">
-                <!-- Product 1 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card product-card h-100">
-                        <span class="badge-discount">-15%</span>
-                        <img src="play5.webp" class="card-img-top" alt="Controle PlayStation 5">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Console Sony PlayStation 5, Edição Digital</h5>
-                            <p class="card-text">SSD 825GB, Controle Sem Fio DualSense + 2 Jogos Digitais</p>
-                            <div class="mt-auto">
-                                <p class="product-price">R$  3.533,07</p>
-                                <p class="old-price">R$ 3.799,00</p>
-                                <p class="text-muted small">ou 10x de R$ 379,90</p>
-                                <a href="#" class="btn btn-primary w-100">Adicionar ao Carrinho</a>
+
+            <?php
+    
+                $produtos = mysqli_query($conexao, "SELECT * FROM tb_produtos limit 4 ");  
+                while ($row = mysqli_fetch_assoc($produtos)) {                
+                    echo "
+                    <div class='col-md-6 col-lg-3'>
+                        <div class='card product-card h-100'>
+                            <img src='admin/cadastros/produtos/fotos/".$row['foto']."' 
+                            class='card-img-top' alt='".$row['nome']."'>
+                            <div class='card-body d-flex flex-column'>
+                                <h5 class='card-title'>".$row['nome']."</h5>
+                                <p class='card-text'>".$row['descricao']."</p>
+                                <div class='mt-auto'>
+                                    <p class='product-price'>R$ ".$row['preco']."</p>                                  
+                                    <p class='text-muted small'>ou 10x de R$ ".($row['preco']/10)."</p>
+                                    <a href='#' class='btn btn-primary w-100'>Adicionar ao Carrinho</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Product 2 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card product-card h-100">
-                        <span class="badge-discount">-20%</span>
-                        <img src="munitor.jpg" class="card-img-top" alt="Monitor Gamer">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Monitor Gamer AOC Agon Pro</h5>
-                            <p class="card-text">CS2 24, 24.1 Pol, eSports TN, FHD, 0.3ms, 610Hz, G-Sync, HDMI/DP, CS24A
-                            </p>
-                            <div class="mt-auto">
-                                <p class="product-price">R$ 1.299,00</p>
-                                <p class="old-price">R$ 1.599,00</p>
-                                <p class="text-muted small">ou 12x de R$ 108,25</p>
-                                <a href="#" class="btn btn-primary w-100">Adicionar ao Carrinho</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 3 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card product-card h-100">
-                        <img src="notboo.webp" class="card-img-top" alt="Notebook">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Notebook ASUS Vivobook 15 M1502</h5>
-                            <p class="card-text">AMD Ryzen 5, 8GB RAM, 512GB SSD, 15.6"</p>
-                            <div class="mt-auto">
-                                <p class="product-price">R$ 2.899,00</p>
-                                <p class="old-price">R$ 3.199,00</p>
-                                <p class="text-muted small">ou 12x de R$ 241,58</p>
-                                <a href="#" class="btn btn-primary w-100">Adicionar ao Carrinho</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Product 4 -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card product-card h-100">
-                        <span class="badge-discount">-25%</span>
-                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Smartphone">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Samsung Galaxy A54</h5>
-                            <p class="card-text">128GB, 6GB RAM, Câmera 50MP, Tela 6.7"</p>
-                            <div class="mt-auto">
-                                <p class="product-price">R$ 1.499,00</p>
-                                <p class="old-price">R$ 1.999,00</p>
-                                <p class="text-muted small">ou 10x de R$ 149,90</p>
-                                <a href="#" class="btn btn-primary w-100">Adicionar ao Carrinho</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ";
+            }
+            ?>
+             
+            
             </div>
         </section>
 
