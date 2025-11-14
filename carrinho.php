@@ -39,5 +39,5 @@
 <a class="btn btn-primary btn-sm" href="index.php">
 <span class="fas fa-shopping-cart"></span> Continuar Comprando</a>
 
-<a class="btn btn-success btn-sm" href="?pg=FinalizarPedido">
+<a class="btn btn-success btn-sm" href="?page=FinalizarPedido">
 <span class="fas fa-shopping-cart"></span> Finalizar Pedido</a>
