@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+  ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -218,10 +221,16 @@
                     <a href="?page=CadastroLogin" class="btn btn-outline-secondary me-2">
                         <i class="fas fa-user"></i>
                     </a>
-                    <a href="#" class="btn btn-outline-primary position-relative">
+                    <a href="?page=Carrinho" class="btn btn-outline-primary position-relative">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            3
+                            <?php 
+                               if (isset($_SESSION["qtd_carrinho"])){
+                                echo $_SESSION["qtd_carrinho"];
+                               }else{
+                                echo 0;
+                               }
+                            ?>
                         </span>
                     </a>
                 </div>
@@ -236,6 +245,7 @@
                 case 'contato': include("contato/index.php");  break;
                 case 'CadastroLogin': include("cadastroLogin.php"); break;
                 case 'NovoCliente': include("salvaCliente.php"); break;
+                case "Carrinho"   : include("carrinho.php"); break;
                 default: include("produtos.php");   break;
             }
         } else {

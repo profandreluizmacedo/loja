@@ -59,7 +59,7 @@
                                 <div class='mt-auto'>
                                     <p class='product-price'>R$ ".$row['preco']."</p>                                  
                                     <p class='text-muted small'>ou 10x de R$ ".($row['preco']/10)."</p>
-                                    <a href='#' class='btn btn-primary w-100'>Adicionar ao Carrinho</a>
+                                    <a href='addCarrinho.php?id_produto=".$row['id']."' class='btn btn-primary w-100'>Adicionar ao Carrinho</a>
                                 </div>
                             </div>
                         </div>
