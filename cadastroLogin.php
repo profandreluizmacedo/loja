@@ -1,4 +1,10 @@
-    <!-- Contact Hero -->
+  <?php 
+    if (isset($_SESSION["cliente"])){
+      echo '<meta http-equiv="refresh" content="0; URL=\'index.php?page=FinalizarPedido\'"/>';
+      exit();
+    }
+  ?>
+  <!-- Contact Hero -->
     <section class="contact-hero">
         <div class="container text-center">
             <h1 class="display-4 fw-bold">Faça seu login ou cadaste-se</h1>
@@ -69,7 +75,7 @@
         }
         $.post("loginCliente.php",{login:$("#loginemail").val(), senha:$("#loginsenha").val()}, function(retorno){
             if (retorno==1){
-                $(location).attr('href', '?pg=Pedidos');
+                $(location).attr('href', '?page=Carrinho');
             }else{
                 alert(retorno);
             }

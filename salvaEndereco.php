@@ -10,8 +10,8 @@
     
     include("admin/includes/conexao.php");
 
-    $grava = mysqli_query($conexao,"INSERT INTO tb_cliente_enderecos 
-    VALUES (null, $id_cliente, '$descricao', '$endereco', '$numero', '$bairro', '$cep', $cidade)");
+    $grava = mysqli_query($conexao,"INSERT INTO tb_clientes_enderecos 
+    VALUES (null, $id_cliente, '$descricao', '$endereco', '$numero', '$bairro', '$cep', $cidade)") or die(mysqli_error($conexao));
 
-    
+   echo "Endereço Cadastrado com sucesso";
 ?>

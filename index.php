@@ -165,9 +165,13 @@
         .card-title2{
             color: #121212;
         }
-  .card-text2{
-    color: #121212;
-  }
+        .card-text2{
+            color: #121212;
+        }
+
+        .ClienteLogado{
+            color: #e95e14;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
@@ -215,12 +219,18 @@
                     <input class="form-control me-2" type="search" placeholder="Pesquisar produtos...">
                     <button class="btn btn-outline-primary" type="submit">
                         <i class="fas fa-search"></i>
-                    </button>
+                    </button> 
                 </form>
                 <div class="d-flex">
-                    <a href="?page=CadastroLogin" class="btn btn-outline-secondary me-2">
+                    <?php 
+                    if (isset($_SESSION["cliente"])){
+                        echo "<b class='ClienteLogado'>Olá ".$_SESSION["cliente"]["nome"] . "</b>&nbsp; <a href='sair.php'>Sair</a>";
+                    }else{
+                        echo '<a href="?page=CadastroLogin" class="btn btn-outline-secondary me-2">
                         <i class="fas fa-user"></i>
-                    </a>
+                    </a>';
+                    }
+                   ?> 
                     <a href="?page=Carrinho" class="btn btn-outline-primary position-relative">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

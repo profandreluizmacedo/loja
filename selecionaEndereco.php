@@ -68,7 +68,8 @@
 <button type="button" id="btnFinalizar" class="btn btn-success">Finalizar Pedido</button>
 
                     </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
+<script src="admin/includes/funcoes.js"></script>
 <script>
     $('#estado').change(function (){
     var estado = $('#estado option:selected').val();
@@ -96,7 +97,8 @@
 
  $("#listaEnderecos").load("listaEnderecos.php");
 
-$("#btnCadEndereco").click(function(){
+$("#btnCadEndereco").click(function(e){
+   // e.preventDefault();
     //Valida os campos
     if ($("#descricao").val() == ''){
         $("#descricao").css("border-color","red");
@@ -148,8 +150,8 @@ $("#btnCadEndereco").click(function(){
     }
     
     $('#FrmEndereco').ajaxForm(function(retorno) {
-       // alert(retorno);
-        mostraDialogo(retorno, 'info', 3000);
+        alert(retorno);
+        //modalAlerta("Sucesso",retorno) ;   
         $("#listaEnderecos").load("listaEnderecos.php");
     });
 

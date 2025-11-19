@@ -5,4 +5,6 @@
     include_once("cadastroLogin.php") ;
     exit();
   }
+
+  //Verifica se existe um Endereço Selecionado
 ?>
