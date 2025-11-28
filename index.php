@@ -224,7 +224,7 @@
                 <div class="d-flex">
                     <?php 
                     if (isset($_SESSION["cliente"])){
-                        echo "<b class='ClienteLogado'>Olá ".$_SESSION["cliente"]["nome"] . "</b>&nbsp; <a href='sair.php'>Sair</a>";
+                        echo "<b class='ClienteLogado'>Olá ".$_SESSION["cliente"]["nome"] . "</b>&nbsp; <a href='sair.php'>Sair</a> &nbsp; <a class='btn btn-outline-primary' href='?page=Pedidos'><i class='fas fa-paper-plane'></i></a>'";
                     }else{
                         echo '<a href="?page=CadastroLogin" class="btn btn-outline-secondary me-2">
                         <i class="fas fa-user"></i>
@@ -258,6 +258,7 @@
                 case "Carrinho"          : include("carrinho.php"); break;
                 case "FinalizarPedido"   : include("selecionaEndereco.php"); break;
                 case "Sucesso"           : include("msgSucesso.php"); break;
+                case "Pedidos"           : include("pedidos.php"); break;
                 default: include("produtos.php");   break;
             }
         } else {
