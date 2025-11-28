@@ -83,14 +83,21 @@
    $("#btnFinalizar").click(function(){
       const radioSelecionado = $('input[type="radio"][name="endereco_entrega"]:checked').val();
 
+      
    if (!radioSelecionado) {
     alert("Nenhum endereço selecionado.");
     exit();
    }
 
-   $.post("salvaPedido.php",{id_endereco:radioSelecionado},function(retorno){
+   $.post("finalizarPedido.php",{id_endereco:radioSelecionado},function(retorno){
        //Redireciona para a Página de Sucesso
-       window.location.href = "index.php?page=Sucesso";
+       if (retorno == 'Sucesso'){
+          window.location.href = "index.php?page=Sucesso";
+       }else{
+         alert("Erro ao finalizar pedido.".retorno);
+       }
+      
+       //
     }) 
 
  })

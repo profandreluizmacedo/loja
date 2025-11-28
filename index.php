@@ -252,11 +252,12 @@
         if (isset($_GET['page'])) {
             $page = $_GET['page'];
             switch ($page) {
-                case 'contato'         : include("contato/index.php");  break;
-                case 'CadastroLogin'   : include("cadastroLogin.php"); break;
-                case 'NovoCliente'     : include("salvaCliente.php"); break;
-                case "Carrinho"        : include("carrinho.php"); break;
-                case "FinalizarPedido" : include("selecionaEndereco.php"); break;
+                case 'contato'           : include("contato/index.php");  break;
+                case 'CadastroLogin'     : include("cadastroLogin.php"); break;
+                case 'NovoCliente'       : include("salvaCliente.php"); break;
+                case "Carrinho"          : include("carrinho.php"); break;
+                case "FinalizarPedido"   : include("selecionaEndereco.php"); break;
+                case "Sucesso"           : include("msgSucesso.php"); break;
                 default: include("produtos.php");   break;
             }
         } else {
